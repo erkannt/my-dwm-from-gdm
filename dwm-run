@@ -17,11 +17,11 @@ eval $(ssh-agent)
 test $(which gpg-agent) && eval $(gpg-agent --daemon)
 
 # Configure mouse buttons for M570 trackball
-xinput --set-button-map 8 1 2 3 4 5 6 7 8 2
+xinput --set-button-map 8 1 2 3 4 5 6 7 8 2 &
 
 # set wallpaper or fallback to decent color
 test $(which xsetroot)  && xsetroot -solid whitesmoke &
-test $(feh) && feh --bg-center ~/.wallpaper.png
+test $(feh) && feh --bg-center ~/.wallpaper.png &
 
 if [ $(which xbanish) ]; then
     xbanish >>$HOME/.xbanish.log &    # https://github.com/jcs/xbanish
@@ -34,23 +34,4 @@ xinitcfg="$HOME/.config/xinit"
 test -f "$xinitcfg/u/$(uname)"       && . "$xinitcfg/u/$(uname)"
 test -f "$xinitcfg/host/$(hostname)" && . "$xinitcfg/host/$(hostname)"
 
-/usr/local/bin/dwm 2>>.dwm_log &
-
-# exit X when dwmstatus (or failsafe xterm) is killed
-if [ $(which slstatus) ]; then
-    slstatus
-elif [ $(which dwmstatus) ]; then
-    dwmstatus
-elif [ $(which st) ]; then
-    st
-elif [ $(which urxvt) ]; then
-    urxvt
-elif [ $(which uxterm) ]; then
-    uxterm -ls -T Failsafe -geometry 80x24-0-0
-elif [ $(which rxvt) ]; then
-    rxvt
-elif [ $(which xterm) ]; then
-    xterm -ls -T Failsafe -geometry 80x24-0-0
-elif [ $(which gnome-terminal) ]; then
-    gnome-terminal
-fi
+/usr/local/bin/dwm 2>>.dwm_log
