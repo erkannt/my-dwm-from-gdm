@@ -14,9 +14,10 @@ test -f "$usermodmap"    && xmodmap     "$usermodmap"
 
 # start some nice programs
 eval $(ssh-agent)
-
-test $(which xsetroot)  && xsetroot -solid midnightblue &
 test $(which gpg-agent) && eval $(gpg-agent --daemon)
+
+# set wallpaper or fallback to decent color
+test $(which xsetroot)  && xsetroot -solid whitesmoke &
 test $(feh) && feh --bg-center ~/.wallpaper.png
 
 if [ $(which xbanish) ]; then
