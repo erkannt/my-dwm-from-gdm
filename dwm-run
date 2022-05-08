@@ -16,6 +16,9 @@ test -f "$usermodmap"    && xmodmap     "$usermodmap"
 eval $(ssh-agent)
 test $(which gpg-agent) && eval $(gpg-agent --daemon)
 
+# Configure mouse buttons for M570 trackball
+xinput --set-button-map 8 1 2 3 4 5 6 7 8 2
+
 # set wallpaper or fallback to decent color
 test $(which xsetroot)  && xsetroot -solid whitesmoke &
 test $(feh) && feh --bg-center ~/.wallpaper.png
