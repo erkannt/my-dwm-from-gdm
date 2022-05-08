@@ -15,6 +15,7 @@ test -f "$usermodmap"    && xmodmap     "$usermodmap"
 # start some nice programs
 eval $(ssh-agent)
 test $(which gpg-agent) && eval $(gpg-agent --daemon)
+test $(which sb) && sb &
 
 # Configure mouse buttons for M570 trackball
 xinput --set-button-map 8 1 2 3 4 5 6 7 8 2 &
