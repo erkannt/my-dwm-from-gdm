@@ -17,6 +17,7 @@ eval $(ssh-agent)
 
 test $(which xsetroot)  && xsetroot -solid midnightblue &
 test $(which gpg-agent) && eval $(gpg-agent --daemon)
+test $(feh) && feh --bg-center ~/.wallpaper.png
 
 if [ $(which xbanish) ]; then
     xbanish >>$HOME/.xbanish.log &    # https://github.com/jcs/xbanish
