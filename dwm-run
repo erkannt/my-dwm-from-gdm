@@ -20,8 +20,7 @@ test $(which gpg-agent) && eval $(gpg-agent --daemon)
 xinput --set-button-map 8 1 2 3 4 5 6 7 8 2 &
 
 # set wallpaper or fallback to decent color
-test $(which xsetroot)  && xsetroot -solid whitesmoke &
-test $(feh) && feh --bg-center ~/.wallpaper.png &
+test $(feh) && feh --bg-center ~/.wallpaper.png || xsetroot -solid whitesmoke &
 
 if [ $(which xbanish) ]; then
     xbanish >>$HOME/.xbanish.log &    # https://github.com/jcs/xbanish
