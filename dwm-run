@@ -34,4 +34,4 @@ xinitcfg="$HOME/.config/xinit"
 test -f "$xinitcfg/u/$(uname)"       && . "$xinitcfg/u/$(uname)"
 test -f "$xinitcfg/host/$(hostname)" && . "$xinitcfg/host/$(hostname)"
 
-/usr/local/bin/dwm 2>>.dwm_log
+/bin/dbus-run-session /usr/local/bin/dwm 2>>.dwm_log
