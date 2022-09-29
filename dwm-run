@@ -27,6 +27,10 @@ if [ $(which unclutter) ]; then
     unclutter --timeout 3 --ignore-scrolling &
 fi
 
+if [ $(which dunst) ]; then
+    dunst &
+fi
+
 # source machine- and uname-specific xinitrcs
 xinitcfg="$HOME/.config/xinit"
 test -f "$xinitcfg/u/$(uname)"       && . "$xinitcfg/u/$(uname)"
